@@ -44,4 +44,13 @@ public class Passenger {
         this.id = id;
     }
 
+    @Override
+    public String toString() {
+        return "Passenger{" +
+                "name='" + name + '\'' +
+                ", contactInfo=" + contactInfo +
+                ", id=" + id +
+                ", flightId=" + flightId +
+                '}';
+    }
 }

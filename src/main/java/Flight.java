@@ -35,4 +35,13 @@ public class Flight {
     public void addPassengers(Passenger passenger) {
         passengers.add(passenger);
     }
+
+    @Override
+    public String toString() {
+        return "Flight{" +
+                "destination='" + destination + '\'' +
+                ", flightId=" + flightId +
+                ", passengers=" + passengers +
+                '}';
+    }
 }
