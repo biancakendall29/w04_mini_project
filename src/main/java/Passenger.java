@@ -1,11 +1,10 @@
-
 public class Passenger {
     private String name;
-    private int contactInfo;
+    private String contactInfo;
     private int id;
     protected int flightId;
 
-    public Passenger(String name, int contactInfo, int id) {
+    public Passenger(String name, String contactInfo, int id) {
         this.name = name;
         this.contactInfo = contactInfo;
         this.id = id;
@@ -28,11 +27,11 @@ public class Passenger {
         this.name = name;
     }
 
-    public int getContactInfo() {
+    public String getContactInfo() {
         return contactInfo;
     }
 
-    public void setContactInfo(int contactInfo) {
+    public void setContactInfo(String contactInfo) {
         this.contactInfo = contactInfo;
     }
 

@@ -36,12 +36,16 @@ public class Flight {
         passengers.add(passenger);
     }
 
+    public void removePassengers(Passenger passenger){
+        passengers.remove(passenger);
+    }
+
     @Override
     public String toString() {
-        return "Flight{" +
+        return "\n Flight{" +
                 "destination='" + destination + '\'' +
                 ", flightId=" + flightId +
                 ", passengers=" + passengers +
-                '}';
+                "}";
     }
 }
