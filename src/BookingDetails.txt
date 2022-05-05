@@ -1,0 +1,4 @@
+
+ Flight{destination='LONDON', flightId=89, passengers=[Passenger{name='JOHN', contactInfo=1234, id=17, flightId=89}]}
+
+ Flight{destination='CAPE TOWN', flightId=78, passengers=[Passenger{name='JANE', contactInfo=5678, id=78, flightId=78}]}

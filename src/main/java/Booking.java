@@ -1,3 +1,7 @@
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -15,7 +19,8 @@ public class Booking {
         this.passengers = new ArrayList<>();
     }
 
-    public void start() {
+    public void start() throws IOException {
+
         System.out.println("FLIGHT BOOKING");
         System.out.println("What would you like to do?");
         System.out.println("1 - Add a new flight");
@@ -59,7 +64,7 @@ public class Booking {
         }
     }
 
-    public void addNewFlight() {
+    public void addNewFlight() throws IOException {
         System.out.println('\n');
         System.out.println("Provide a flight destination: ");
         String flightDest1 = scanner.nextLine();
@@ -89,7 +94,7 @@ public class Booking {
         returnToMenu();
     }
 
-    public void displayAllFlights() {
+    public void displayAllFlights() throws IOException {
         System.out.println('\n');
         System.out.println(flights);
 
@@ -97,7 +102,7 @@ public class Booking {
 
     }
 
-    public void addNewPassenger() {
+    public void addNewPassenger() throws IOException {
         System.out.println('\n');
         System.out.println("Provide a passenger name: ");
         String passengerName1 = scanner.nextLine();
@@ -131,7 +136,7 @@ public class Booking {
 
     }
 
-    public void bookPassenger() {
+    public void bookPassenger() throws IOException {
         System.out.println('\n');
         System.out.println("Where would you like to go?");
         List<Flight> foundFlights;
@@ -170,6 +175,18 @@ public class Booking {
                 chosenFlight.addPassengers(chosenPassenger);
                 chosenPassenger.setFlightId(chosenFlight);
 
+                File file = new File("src/BookingDetails.txt");
+
+                if(!file.exists()) {
+                    file.createNewFile();
+                }
+
+                FileWriter fileWriter = new FileWriter(file, true);
+                PrintWriter printWriter = new PrintWriter(fileWriter);
+                printWriter.println(chosenFlight);
+
+                printWriter.close();
+
                 System.out.println("Your booking details: ");
                 System.out.println(chosenFlight);
 
@@ -181,10 +198,9 @@ public class Booking {
             bookPassenger();
         }
     }
-//
 
 
-    public void cancelFlight() {
+    public void cancelFlight() throws IOException {
         System.out.println('\n');
         System.out.println(flights);
         System.out.println("Which flight would you like to cancel?");
@@ -205,7 +221,7 @@ public class Booking {
 
     }
 
-    public void returnToMenu() {
+    public void returnToMenu() throws IOException {
         System.out.println('\n');
         System.out.println("Would you like to return to the main menu?");
         System.out.println("Y or N");
