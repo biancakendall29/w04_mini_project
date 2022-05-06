@@ -5,8 +5,6 @@ import java.io.PrintWriter;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static java.lang.System.console;
-import static java.lang.System.exit;
 
 public class Booking {
     private List<Flight> flights;
@@ -29,34 +27,34 @@ public class Booking {
         System.out.println("4 - Book a passenger onto a flight");
         System.out.println("5 - Cancel a flight");
         System.out.println("6 - Remove a passenger from a flight");
-        boolean loop = true;
+        boolean startLoop = true;
 
-        while (loop) {
+        while (startLoop) {
             int option = Integer.parseInt(scanner.nextLine());
             if (option == 1) {
                 System.out.println("Option 1 chosen");
                 addNewFlight();
-                loop = false;
+                startLoop = false;
             } else if (option == 2) {
                 System.out.println("Option 2 chosen");
                 displayAllFlights();
-                loop = false;
+                startLoop = false;
             } else if (option == 3) {
                 System.out.println("Option 3 chosen");
                 addNewPassenger();
-                loop = false;
+                startLoop = false;
             } else if (option == 4) {
                 System.out.println("Option 4 chosen");
                 bookPassenger();
-                loop = false;
+                startLoop = false;
             } else if (option == 5) {
                 System.out.println("Option 5 chosen");
                 cancelFlight();
-                loop = false;
+                startLoop = false;
             } else if (option == 6) {
                 System.out.println("Option 6 chosen");
                 removePassenger();
-                loop = false;
+                startLoop = false;
             } else {
                 System.out.println("Invalid input");
 
@@ -71,10 +69,10 @@ public class Booking {
         String flightDest = flightDest1.toUpperCase();
         System.out.println("Providing a flight id to flight");
         Random rand = new Random();
-        boolean randomLoop = false;
+        boolean loop = false;
         int flightId = rand.nextInt(1, 101);
 
-        while (randomLoop) {
+        while (loop) {
             int finalFlightId = flightId;
             Flight dupFlightId = flights.stream()
                     .filter(flight -> flight.getFlightId() == finalFlightId)
@@ -82,7 +80,7 @@ public class Booking {
             if (flightId == dupFlightId.getFlightId()) {
                 flightId = rand.nextInt(1, 101);
             } else {
-                randomLoop = true;
+                loop = true;
             }
         }
 
@@ -177,7 +175,7 @@ public class Booking {
 
                 File file = new File("src/BookingDetails.txt");
 
-                if(!file.exists()) {
+                if (!file.exists()) {
                     file.createNewFile();
                 }
 
@@ -195,7 +193,7 @@ public class Booking {
         } catch (Exception exception) {
             System.out.println("This input does not exist!");
             System.out.println("Check that this input matches the record.");
-            bookPassenger();
+            returnToMenu();
         }
     }
 
@@ -221,20 +219,6 @@ public class Booking {
 
     }
 
-    public void returnToMenu() throws IOException {
-        System.out.println('\n');
-        System.out.println("Would you like to return to the main menu?");
-        System.out.println("Y or N");
-        String yOrN = scanner.nextLine();
-
-        if (yOrN.equals("Y") || yOrN.equals("y")) {
-            start();
-        } else if (yOrN.equals("N") || yOrN.equals("n")) {
-            System.exit(0);
-        } else {
-            returnToMenu();
-        }
-    }
 
     public void removePassenger() {
         System.out.println("Please choose the flight id of the passenger you would like to remove.");
@@ -257,10 +241,22 @@ public class Booking {
 
         flightChosen.removePassengers(passengerChosen);
         System.out.println(passengerChosen + "removed from " + flightChosen);
-//        passengerChosen.setFlightId(null);
 
+    }
 
+    public void returnToMenu() throws IOException {
+        System.out.println('\n');
+        System.out.println("Would you like to return to the main menu?");
+        System.out.println("Y or N");
+        String yOrN = scanner.nextLine();
 
+        if (yOrN.equals("Y") || yOrN.equals("y")) {
+            start();
+        } else if (yOrN.equals("N") || yOrN.equals("n")) {
+            System.exit(0);
+        } else {
+            returnToMenu();
+        }
     }
 
     public void addFlight(Flight flight) {
@@ -274,36 +270,6 @@ public class Booking {
     public void removeFlight(Flight flight) {
         flights.remove(flight);
     }
-
-
-//    public void chooseFlight() {
-//        System.out.println("Which flight (destination) would you like to choose? ");
-//        String dest = scanner.next();
-//        System.out.println("You have chosen " + dest);
-//
-//
-//        Random rand = new Random();
-//        int flightId = rand.nextInt(1, 11);
-//
-//        Flight flight = new Flight(dest, flightId);
-//        flight.addPassengers(passenger);
-//
-//        flights.add(flight);
-//
-//        System.out.println(flight);
-
-//        try {
-//            flight = flights
-//                    .stream()
-//                    .filter(fl -> fl.getDestination().equals(dest))
-//                    .findAny()
-//                    .get();
-//        } catch (NoSuchElementException exception) {
-//            System.out.println("Flight doesn't exist. Creating new flight!");
-//        }
-
-//        passenger.setFlightId(flight);
-
 }
 
 
