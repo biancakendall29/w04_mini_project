@@ -27,6 +27,7 @@ public class Booking {
         System.out.println("4 - Book a passenger onto a flight");
         System.out.println("5 - Cancel a flight");
         System.out.println("6 - Remove a passenger from a flight");
+        System.out.println("Please choose an option: ");
         boolean startLoop = true;
 
         while (startLoop) {
@@ -57,6 +58,7 @@ public class Booking {
                 startLoop = false;
             } else {
                 System.out.println("Invalid input");
+                returnToMenu();
 
             }
         }
@@ -220,7 +222,7 @@ public class Booking {
     }
 
 
-    public void removePassenger() {
+    public void removePassenger() throws IOException {
         System.out.println("Please choose the flight id of the passenger you would like to remove.");
 
         System.out.println(passengers);
@@ -241,6 +243,7 @@ public class Booking {
 
         flightChosen.removePassengers(passengerChosen);
         System.out.println(passengerChosen + "removed from " + flightChosen);
+        returnToMenu();
 
     }
 

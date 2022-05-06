@@ -10,3 +10,13 @@
  Flight{destination='LONDON', flightId=90, passengers=[Passenger{name='JOHN DOE', contactInfo=123, id=94, flightId=90}]}
 
  Flight{destination='LONDON', flightId=90, passengers=[Passenger{name='JOHN DOE', contactInfo=123, id=94, flightId=90}, Passenger{name='JANE DOE', contactInfo=321, id=27, flightId=90}]}
+
+ Flight{destination='LONDON', flightId=72, passengers=[Passenger{name='JOHN DOE', contactInfo=1234567890, id=72, flightId=72}]}
+
+ Flight{destination='LONDON', flightId=33, passengers=[Passenger{name='JOHN DOE', contactInfo=1234567890, id=25, flightId=33}]}
+
+ Flight{destination='LONDON', flightId=13, passengers=[Passenger{name='JOHN DOE', contactInfo=1234567890, id=43, flightId=13}]}
+
+ Flight{destination='LONDON', flightId=34, passengers=[Passenger{name='JOHN DOE', contactInfo=1234567890, id=45, flightId=34}]}
+
+ Flight{destination='LONDON', flightId=34, passengers=[Passenger{name='JANE DOE', contactInfo=0987654321, id=7, flightId=34}]}

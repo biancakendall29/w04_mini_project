@@ -47,7 +47,5 @@ public class BookingTest {
         assertThat(booking.getFlights().size()).isEqualTo(2);
         booking.removeFlight(flight2);
         assertThat(booking.getFlights().size()).isEqualTo(1);
-
-
     }
 }
